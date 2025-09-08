@@ -1,0 +1,79 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pancono Mini App</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="card">
+      <div class="header">
+        <img src="/static/logo.png" alt="Pancono" class="logo" />
+        <h1>Pancono Airdrop</h1>
+        <p class="subtitle">Earn <strong>1 PANNO</strong> every 10 minutes — live claim per second</p>
+      </div>
+
+      <div id="home-view" class="view">
+        <div class="balance-box">
+          <div>Balance</div>
+          <div id="balance" class="balance">0.0000 PANNO</div>
+        </div>
+
+        <div id="session-area" class="session-area">
+          <button id="start-btn" class="btn gradient-btn">Start Airdrop</button>
+
+          <div id="active-area" class="active-area hidden">
+            <div class="timer-row">
+              <div class="timer-label">Time left</div>
+              <div id="timer" class="timer">10:00</div>
+            </div>
+            <div class="hint">Auto-claiming... balance updates every second</div>
+          </div>
+        </div>
+
+        <div class="links">
+          <a href="{{ pancono_channel }}" target="_blank" class="link">Pancono Channel</a>
+          <a href="{{ twitter_link }}" target="_blank" class="link">Twitter</a>
+          <a href="https://t.me/{{ wallet_bot | replace('@','') }}" target="_blank" class="link">Wallet Bot</a>
+        </div>
+      </div>
+
+      <div id="referral-view" class="view hidden">
+        <h3>Referral</h3>
+        <div class="ref-row">
+          <div>Referrals: <span id="ref-count">0</span></div>
+        </div>
+        <div class="ref-row">
+          <input id="ref-link" readonly class="ref-link" />
+          <button id="copy-ref" class="btn small">Copy</button>
+        </div>
+      </div>
+
+      <div id="instructions-view" class="view hidden">
+        <h3>Instructions</h3>
+        <pre id="instructions-text" class="instructions"></pre>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button id="nav-home" class="nav-btn active">Home</button>
+      <button id="nav-ref" class="nav-btn">Referral</button>
+      <button id="nav-inst" class="nav-btn">Instructions</button>
+    </nav>
+  </div>
+
+  <script>
+    // inject server-side values for convenience
+    window.APP_CONFIG = {
+      bot_username: "{{ bot_username }}",
+      pancono_channel: "{{ pancono_channel }}",
+      twitter_link: "{{ twitter_link }}",
+      wallet_bot: "{{ wallet_bot }}"
+    };
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
