@@ -6,7 +6,7 @@ plan: free
 buildCommand: pip install -r requirements.txt
 startCommand: uvicorn pancono_airdrop_app:app --host 0.0.0.0 --port $PORT
 envVars:
-- key: TELEGRAM_BOT_USERNAME
+- key: @PanconoBot
 value: "PanconoBot"
 - key: MODE
 value: "telegram"
